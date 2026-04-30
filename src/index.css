@@ -1,0 +1,300 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+* { box-sizing: border-box; }
+body {
+  background-color: #050810;
+  color: #e2e8f0;
+  font-family: 'Instrument Sans', sans-serif;
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #050810; }
+::-webkit-scrollbar-thumb { background: #00d4ff44; border-radius: 2px; }
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+/* Gradient orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
+  top: -100px; left: -100px;
+}
+.orb-2 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+  bottom: 20%; right: -150px;
+}
+.orb-3 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%);
+  bottom: 10%; left: 20%;
+}
+/* Glass card */
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.glass-strong {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-2 {
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* Nav link hover */
+.nav-link {
+  position: relative;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  transition: color 0.3s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: #00d4ff;
+  transition: width 0.3s ease;
+}
+.nav-link:hover, .nav-link.active { color: #00d4ff; }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+/* CTA Button */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00d4ff22, #7c3aed22);
+  border: 1px solid #00d4ff55;
+  color: #00d4ff;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #00d4ff33, #7c3aed33);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover:not(:disabled) { border-color: #00d4ff; box-shadow: 0 0 30px rgba(0,212,255,0.3); }
+.btn-primary:hover:not(:disabled)::before { opacity: 1; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #94a3b8;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,0.3); color: #e2e8f0; }
+/* Skill bar */
+.skill-bar {
+  height: 2px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.skill-fill.animated { transform: scaleX(1); }
+/* Project card */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,212,255,0.2);
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 1;
+  pointer-events: none;
+}
+.project-card:hover::before { opacity: 1; }
+/* Scan line effect on photo */
+.photo-scan {
+  position: relative;
+  overflow: hidden;
+}
+.photo-scan::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(0,212,255,0.06), transparent);
+  animation: scan 3s linear infinite;
+  pointer-events: none;
+}
+/* Grid lines background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+/* Tech tag */
+.tech-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  border: 1px solid rgba(0,212,255,0.2);
+  color: #00d4ff99;
+  background: rgba(0,212,255,0.05);
+  transition: all 0.2s;
+}
+.tech-tag:hover {
+  border-color: rgba(0,212,255,0.5);
+  color: #00d4ff;
+  background: rgba(0,212,255,0.1);
+}
+/* Status dot */
+.status-dot {
+  width: 8px; height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981, 0 0 16px #10b98166;
+  animation: pulse 2s ease-in-out infinite;
+}
+/* Form inputs */
+.neo-input {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px;
+  padding: 0.9rem 1.1rem;
+  color: #e2e8f0;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.neo-input::placeholder { color: #4b5563; }
+.neo-input:focus {
+  border-color: rgba(0,212,255,0.4);
+  background: rgba(0,212,255,0.04);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
+}
+.neo-input.error { border-color: rgba(239,68,68,0.5); }
+.neo-input.error:focus { box-shadow: 0 0 0 3px rgba(239,68,68,0.08); }
+/* Section reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Number decoration */
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #00d4ff66;
+}
+/* Hero photo frame */
+.photo-frame {
+  position: relative;
+}
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 4px;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  top: -16px; right: -16px;
+  width: 60px; height: 60px;
+  border-top: 2px solid #00d4ff;
+  border-right: 2px solid #00d4ff;
+}
+/* Corner decorations */
+.corner-tl::before, .corner-br::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 20px;
+}
+.hamburger-line {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: #94a3b8;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+/* Horizontal divider with glow */
+.neo-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent);
+}
