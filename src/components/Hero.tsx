@@ -220,7 +220,7 @@ export function Hero() {
           }}>
           
           <div className="neo-divider mb-10" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-8">
             {[
             {
               value: '30+',
@@ -236,6 +236,16 @@ export function Hero() {
               value: '10+',
               label: 'API Integrations',
               color: '#00d4ff'
+            },
+            {
+              value: '100%',
+              label: 'Problem Solving',
+              color: '#7c3aed'
+            },
+            {
+              value: '100%',
+              label: 'Communication',
+              color: '#10b981'
             }].
             map((stat) =>
             <div key={stat.label} className="text-center">
