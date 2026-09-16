@@ -233,8 +233,8 @@ export function Hero() {
               color: '#10b981'
             },
             {
-              value: '\u221E',
-              label: 'Problems Solved',
+              value: '10+',
+              label: 'API Integrations',
               color: '#00d4ff'
             }].
             map((stat) =>

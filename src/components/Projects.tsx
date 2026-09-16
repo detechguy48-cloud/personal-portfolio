@@ -51,7 +51,7 @@ const PROJECTS: Project[] = [
   title: 'Triple Bee Events',
   description:
   'Full-stack event management platform for planning, promoting, and managing events with real-time ticketing and attendee tracking.',
-  tags: ['Next.js', 'Node.js', 'PostgreSQL'],
+  tags: ['React', 'TypeScript'],
   badge: 'FULL STACK',
   badgeColor: '#10b981',
   gradient:
@@ -69,7 +69,7 @@ const PROJECTS: Project[] = [
   title: 'School Management System',
   description:
   'Comprehensive school administration platform with student enrollment, attendance tracking, grade management, and parent-teacher communication.',
-  tags: ['React', 'Python', 'PostgreSQL'],
+  tags: ['React', 'PostgreSQL', 'Python'],
   badge: 'EDTECH',
   badgeColor: '#7c3aed',
   gradient:
