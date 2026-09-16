@@ -17,7 +17,7 @@ export function Footer() {
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="font-mono text-[0.7rem] text-gray-700 tracking-wide">
-          © 2025 NeoPortfolio. Built with precision.
+          © 2026 detechguy. Built with precision.
         </p>
         <button
           onClick={scrollToTop}

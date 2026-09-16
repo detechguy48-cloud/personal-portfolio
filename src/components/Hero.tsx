@@ -31,12 +31,6 @@ export function Hero() {
                 transitionDelay: '0.1s'
               }}>
               
-              <div className="inline-flex items-center gap-3 mb-8">
-                <div className="status-dot" />
-                <span className="font-mono text-[0.72rem] text-neo-sub tracking-[0.12em] uppercase">
-                  Open to Opportunities
-                </span>
-              </div>
             </div>
 
             <div
@@ -130,13 +124,20 @@ export function Hero() {
                 find me on
               </span>
               <div className="neo-divider flex-1 max-w-[40px]" />
-              {['GitHub', 'LinkedIn', 'Twitter'].map((name) =>
+              {[
+                { name: 'GitHub', url: 'https://github.com/dashboard' },
+                { name: 'GitHub 2', url: 'https://github.com/vic112' },
+                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/victor-gospel-leo?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+                { name: 'X', url: 'https://x.com/detechguyy' }
+              ].map((social) =>
               <a
-                key={name}
-                href="#"
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-mono text-[0.75rem] text-neo-muted hover:text-neo-accent transition-colors">
                 
-                  {name}
+                  {social.name}
                 </a>
               )}
             </div>
@@ -202,7 +203,7 @@ export function Hero() {
                         projects shipped
                       </p>
                       <p className="font-display font-bold text-lg text-neo-accent">
-                        50+
+                        30+
                       </p>
                     </div>
                   </div>
@@ -222,14 +223,9 @@ export function Hero() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
             {
-              value: '50+',
+              value: '30+',
               label: 'Projects',
               color: '#00d4ff'
-            },
-            {
-              value: '30+',
-              label: 'API Integrations',
-              color: '#7c3aed'
             },
             {
               value: '5+',

@@ -6,8 +6,8 @@ interface Project {
   tags: string[];
   badge: string;
   badgeColor: string;
-  link1Label: string;
-  link2Label: string;
+  // link1Label: string;
+  // link2Label: string;
   gradient: string;
   patternAngle: string;
   icon: React.ReactNode;
@@ -15,14 +15,12 @@ interface Project {
 const PROJECTS: Project[] = [
 {
   id: 1,
-  title: 'Payment Gateway Hub',
+  title: 'Online NewsFeed',
   description:
-  'Unified payment API integrating Stripe, Flutterwave & Paystack with automatic retry logic and webhook reconciliation.',
-  tags: ['Node.js', 'Stripe', 'PostgreSQL'],
+  'Modern responsive news platform delivering real-time global headlines with category filtering, dynamic article rendering, and fast-loading user experience.',
+  tags: ['React', 'News API', 'CSS'],
   badge: 'API',
   badgeColor: '#00d4ff',
-  link1Label: 'live demo \u2192',
-  link2Label: 'github',
   gradient:
   'linear-gradient(135deg,rgba(0,212,255,0.1) 0%,rgba(124,58,237,0.15) 100%)',
   patternAngle: '45deg',
@@ -34,13 +32,11 @@ const PROJECTS: Project[] = [
       r="28"
       stroke="rgba(0,212,255,0.3)"
       strokeWidth="1" />
-    
         <path
       d="M20 30h20M30 20v20"
       stroke="#00d4ff"
       strokeWidth="2"
       strokeLinecap="round" />
-    
         <circle
       cx="30"
       cy="30"
@@ -48,174 +44,98 @@ const PROJECTS: Project[] = [
       fill="rgba(0,212,255,0.3)"
       stroke="#00d4ff"
       strokeWidth="1" />
-    
       </svg>
-
 },
 {
   id: 2,
-  title: 'CRM Sync Automator',
+  title: 'Triple Bee Events',
   description:
-  'Bidirectional sync between HubSpot, Salesforce, and Airtable with conflict resolution and audit logs. Saved 40hrs/week.',
-  tags: ['n8n', 'HubSpot', 'Python'],
-  badge: 'AUTOMATION',
-  badgeColor: '#7c3aed',
-  link1Label: 'case study \u2192',
-  link2Label: 'github',
-  gradient:
-  'linear-gradient(135deg,rgba(124,58,237,0.1) 0%,rgba(16,185,129,0.15) 100%)',
-  patternAngle: '-45deg',
-  icon:
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <rect
-      x="10"
-      y="15"
-      width="16"
-      height="16"
-      rx="2"
-      stroke="#7c3aed"
-      strokeWidth="1.5" />
-    
-        <rect
-      x="34"
-      y="15"
-      width="16"
-      height="16"
-      rx="2"
-      stroke="#7c3aed"
-      strokeWidth="1.5" />
-    
-        <rect
-      x="22"
-      y="35"
-      width="16"
-      height="16"
-      rx="2"
-      stroke="#7c3aed"
-      strokeWidth="1.5" />
-    
-        <path
-      d="M26 23h8M30 31v4"
-      stroke="#7c3aed"
-      strokeWidth="1.5"
-      strokeLinecap="round" />
-    
-        <path
-      d="M18 31l12 4 12-4"
-      stroke="rgba(124,58,237,0.4)"
-      strokeWidth="1"
-      strokeDasharray="2 2" />
-    
-      </svg>
-
-},
-{
-  id: 3,
-  title: 'SaaS Dashboard Platform',
-  description:
-  'Multi-tenant SaaS with role-based auth, real-time analytics, billing via Stripe, and full REST API with rate limiting.',
-  tags: ['Next.js', 'FastAPI', 'Redis'],
+  'Full-stack event management platform for planning, promoting, and managing events with real-time ticketing and attendee tracking.',
+  tags: ['Next.js', 'Node.js', 'PostgreSQL'],
   badge: 'FULL STACK',
   badgeColor: '#10b981',
-  link1Label: 'live demo \u2192',
-  link2Label: 'github',
   gradient:
   'linear-gradient(135deg,rgba(16,185,129,0.1) 0%,rgba(0,212,255,0.15) 100%)',
   patternAngle: '45deg',
   icon:
   <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <path d="M10 45V25l20-10 20 10v20" stroke="#10b981" strokeWidth="1.5" />
-        <path d="M22 45V33h16v12" stroke="#10b981" strokeWidth="1.5" />
-        <rect
-      x="26"
-      y="18"
-      width="8"
-      height="7"
-      rx="1"
-      stroke="rgba(16,185,129,0.5)"
-      strokeWidth="1" />
-    
+        <rect x="15" y="18" width="30" height="25" rx="2" stroke="#10b981" strokeWidth="1.5" />
+        <path d="M25 15v6M35 15v6" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M15 26h30" stroke="rgba(16,185,129,0.4)" strokeWidth="1" />
       </svg>
-
 },
 {
-  id: 4,
-  title: 'Real-time Event Pipeline',
+  id: 3,
+  title: 'School Management System',
   description:
-  'Scalable webhook pipeline processing 1M+ events/day with dead-letter queues, retry logic, and observability dashboards.',
-  tags: ['Kafka', 'Node.js', 'Docker'],
-  badge: 'WEBHOOK',
-  badgeColor: '#00d4ff',
-  link1Label: 'case study \u2192',
-  link2Label: 'github',
-  gradient:
-  'linear-gradient(135deg,rgba(0,212,255,0.08) 0%,rgba(16,185,129,0.12) 100%)',
-  patternAngle: '45deg',
-  icon:
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <path
-      d="M30 10c-11 0-20 9-20 20s9 20 20 20 20-9 20-20"
-      stroke="#00d4ff"
-      strokeWidth="1.5"
-      strokeLinecap="round" />
-    
-        <path
-      d="M40 10l10 0 0 10"
-      stroke="#00d4ff"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round" />
-    
-        <path
-      d="M30 20v10l6 6"
-      stroke="rgba(0,212,255,0.6)"
-      strokeWidth="1.5"
-      strokeLinecap="round" />
-    
-      </svg>
-
-},
-{
-  id: 5,
-  title: 'Logistics Tracker App',
-  description:
-  'React Native app with real-time GPS tracking, push notifications via Firebase, and Google Maps API integration.',
-  tags: ['React Native', 'Firebase', 'Maps API'],
-  badge: 'MOBILE',
+  'Comprehensive school administration platform with student enrollment, attendance tracking, grade management, and parent-teacher communication.',
+  tags: ['React', 'Python', 'PostgreSQL'],
+  badge: 'EDTECH',
   badgeColor: '#7c3aed',
-  link1Label: 'live demo \u2192',
-  link2Label: 'github',
   gradient:
-  'linear-gradient(135deg,rgba(124,58,237,0.08) 0%,rgba(0,212,255,0.12) 100%)',
+  'linear-gradient(135deg,rgba(124,58,237,0.1) 0%,rgba(16,185,129,0.15) 100%)',
   patternAngle: '-45deg',
   icon:
   <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <rect
-      x="8"
-      y="12"
-      width="18"
-      height="36"
-      rx="2"
-      stroke="#7c3aed"
-      strokeWidth="1.5" />
-    
-        <rect
-      x="34"
-      y="20"
-      width="18"
-      height="28"
-      rx="2"
-      stroke="#7c3aed"
-      strokeWidth="1.5" />
-    
-        <path
-      d="M26 25l8-5M26 35l8-5"
-      stroke="rgba(124,58,237,0.5)"
-      strokeWidth="1"
-      strokeDasharray="2 2" />
-    
+        <path d="M30 10L10 22l20 12 20-12L30 10z" stroke="#7c3aed" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M10 22v16l20 12V38" stroke="#7c3aed" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M50 22v16l-20 12V38" stroke="rgba(124,58,237,0.5)" strokeWidth="1.5" strokeLinejoin="round" />
       </svg>
-
+},
+{
+  id: 4,
+  title: 'School Timetable Generator',
+  description:
+  'Intelligent timetable scheduling system that auto-generates conflict-free class schedules based on teacher availability, room capacity, and curriculum requirements.',
+  tags: ['Python', 'FastAPI', 'React'],
+  badge: 'AUTOMATION',
+  badgeColor: '#00d4ff',
+  gradient:
+  'linear-gradient(135deg,rgba(0,212,255,0.08) 0%,rgba(124,58,237,0.12) 100%)',
+  patternAngle: '45deg',
+  icon:
+  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <rect x="12" y="12" width="36" height="36" rx="2" stroke="#00d4ff" strokeWidth="1.5" />
+        <path d="M12 22h36M12 32h36M12 42h36" stroke="rgba(0,212,255,0.3)" strokeWidth="1" />
+        <path d="M22 12v36M32 12v36M42 12v36" stroke="rgba(0,212,255,0.3)" strokeWidth="1" />
+      </svg>
+},
+{
+  id: 5,
+  title: 'API Automation Suite',
+  description:
+  'Custom API automation framework for testing, monitoring, and orchestrating third-party API integrations with automated retry logic and detailed logging.',
+  tags: ['Node.js', 'Python', 'REST APIs'],
+  badge: 'API',
+  badgeColor: '#10b981',
+  gradient:
+  'linear-gradient(135deg,rgba(16,185,129,0.08) 0%,rgba(0,212,255,0.12) 100%)',
+  patternAngle: '45deg',
+  icon:
+  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <path d="M20 20l20 0M20 30l20 0M20 40l20 0" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="15" cy="20" r="3" stroke="#10b981" strokeWidth="1.5" />
+        <circle cx="45" cy="30" r="3" stroke="#10b981" strokeWidth="1.5" />
+        <circle cx="15" cy="40" r="3" stroke="#10b981" strokeWidth="1.5" />
+      </svg>
+},
+{
+  id: 6,
+  title: 'IT Specialist Portfolio',
+  description:
+  'Professional portfolio showcasing IT infrastructure, network administration, cybersecurity projects, and technical consulting services with client testimonials.',
+  tags: ['React', 'CSS', 'JavaScript'],
+  badge: 'PORTFOLIO',
+  badgeColor: '#7c3aed',
+  gradient:
+  'linear-gradient(135deg,rgba(124,58,237,0.08) 0%,rgba(16,185,129,0.12) 100%)',
+  patternAngle: '-45deg',
+  icon:
+  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <rect x="15" y="15" width="30" height="22" rx="2" stroke="#7c3aed" strokeWidth="1.5" />
+        <path d="M25 37v6M35 37v6" stroke="#7c3aed" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M20 43h20" stroke="#7c3aed" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
 }];
 
 function ProjectCard({ project }: {project: Project;}) {
@@ -278,13 +198,13 @@ function ProjectCard({ project }: {project: Project;}) {
             href="#"
             className="font-mono text-[0.7rem] text-neo-accent tracking-wide">
             
-            {project.link1Label}
+            {/* {project.link1Label} */}
           </a>
           <a
             href="#"
             className="font-mono text-[0.7rem] text-neo-muted tracking-wide">
             
-            {project.link2Label}
+            {/* {project.link2Label} */}
           </a>
         </div>
       </div>
@@ -300,7 +220,7 @@ export function Projects() {
       block: 'start'
     });
   };
-  const sectionLabel = '// 04 \u2014 selected projects';
+  const sectionLabel = '';
   return (
     <section id="projects" className="relative py-28 grid-bg">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">

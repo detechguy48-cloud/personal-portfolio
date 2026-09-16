@@ -86,7 +86,7 @@ const SKILL_GROUPS = [
   },
   {
     name: 'PostgreSQL / MongoDB',
-    percent: 90,
+    percent: 95,
     color: '#00d4ff',
     gradientTo: '#7c3aed'
   }]
@@ -129,44 +129,7 @@ const SKILL_GROUPS = [
   }]
 
 },
-{
-  title: 'DevOps & Cloud',
-  color: '#10b981',
-  delay: '0.3s',
-  icon:
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#10b981"
-    strokeWidth="2">
-    
-        <path d="M21 16V8l-9-4-9 4v8l9 4 9-4z" />
-        <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" />
-      </svg>,
 
-  skills: [
-  {
-    name: 'Docker / Kubernetes',
-    percent: 82,
-    color: '#10b981',
-    gradientTo: '#34d399'
-  },
-  {
-    name: 'AWS / GCP',
-    percent: 78,
-    color: '#10b981',
-    gradientTo: '#34d399'
-  },
-  {
-    name: 'CI/CD Pipelines',
-    percent: 85,
-    color: '#10b981',
-    gradientTo: '#34d399'
-  }]
-
-},
 {
   title: 'API & Automation',
   color: '#00d4ff',
@@ -252,10 +215,7 @@ const SKILL_GROUPS = [
   'Stripe',
   'Twilio',
   'Sendgrid',
-  'Slack API',
-  'Shopify',
-  'HubSpot',
-  'Airtable']
+  'Shopify']
 
 }];
 

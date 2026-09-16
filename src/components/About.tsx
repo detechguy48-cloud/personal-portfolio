@@ -1,7 +1,7 @@
 import React from 'react';
 const INFO_CARDS = [
 {
-  title: 'Backend Architecture',
+  title: '',
   description:
   'Designing microservices, REST & GraphQL APIs, and event-driven architectures that handle millions of requests reliably.',
   color: '#00d4ff',
