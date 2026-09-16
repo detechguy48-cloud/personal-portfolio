@@ -165,7 +165,7 @@ export function Contact() {
   return (
     <section id="contact" className="relative py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div>
             <div className="reveal">
               <p className="section-num mb-3">{sectionLabel}</p>
@@ -263,7 +263,7 @@ export function Contact() {
               transitionDelay: '0.2s'
             }}>
             
-            <div className="glass-strong rounded p-8 lg:p-10">
+            <div className="glass-strong rounded p-6 sm:p-8 lg:p-10">
               <form onSubmit={handleSubmit} noValidate>
                 <div className="space-y-6">
                   <FormField label="Name *" error={errors.name}>

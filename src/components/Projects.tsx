@@ -224,7 +224,7 @@ export function Projects() {
   return (
     <section id="projects" className="relative py-28 grid-bg">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-10 lg:mb-16">
           <div>
             <p className="section-num mb-3">{sectionLabel}</p>
             <h2
@@ -244,7 +244,7 @@ export function Projects() {
           </button>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {PROJECTS.map((project, i) =>
           <div
             key={project.id}

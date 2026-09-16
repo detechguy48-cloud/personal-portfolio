@@ -231,7 +231,7 @@ export function Skills() {
       }}>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="reveal text-center mb-16">
+        <div className="reveal text-center mb-10 lg:mb-16">
           <p className="section-num mb-3">{sectionLabel}</p>
           <h2
             className="font-display font-extrabold leading-[1.1] text-neo-text tracking-tight"
@@ -243,11 +243,11 @@ export function Skills() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {SKILL_GROUPS.map((group) =>
           <div
             key={group.title}
-            className="reveal glass rounded p-7"
+            className="reveal glass rounded p-5 sm:p-7"
             style={{
               transitionDelay: group.delay
             }}>

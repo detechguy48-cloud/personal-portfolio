@@ -22,8 +22,7 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center grid-bg pt-16">
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full py-24">          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="order-2 lg:order-1">
             <div
               className="reveal"
@@ -115,7 +114,7 @@ export function Hero() {
             </div>
 
             <div
-              className="reveal mt-12 flex items-center gap-6"
+              className="reveal mt-12"
               style={{
                 transitionDelay: '0.65s'
               }}>
@@ -123,23 +122,24 @@ export function Hero() {
               <span className="font-mono text-[0.65rem] text-neo-muted tracking-[0.1em]">
                 find me on
               </span>
-              <div className="neo-divider flex-1 max-w-[40px]" />
-              {[
-                { name: 'GitHub', url: 'https://github.com/dashboard' },
-                { name: 'GitHub 2', url: 'https://github.com/vic112' },
-                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/victor-gospel-leo?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
-                { name: 'X', url: 'https://x.com/detechguyy' }
-              ].map((social) =>
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-[0.75rem] text-neo-muted hover:text-neo-accent transition-colors">
-                
-                  {social.name}
-                </a>
-              )}
+              <div className="flex flex-wrap items-center gap-4 mt-3">
+                {[
+                  { name: 'GitHub', url: 'https://github.com/dashboard' },
+                  { name: 'GitHub 2', url: 'https://github.com/vic112' },
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/victor-gospel-leo?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+                  { name: 'X', url: 'https://x.com/detechguyy' }
+                ].map((social) =>
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[0.75rem] text-neo-muted hover:text-neo-accent transition-colors">
+                  
+                    {social.name}
+                  </a>
+                )}
+              </div>
             </div>
           </div>
 
@@ -152,10 +152,8 @@ export function Hero() {
               
               <div className="photo-frame animate-float inline-block">
                 <div
-                  className="photo-scan"
+                  className="photo-scan w-[200px] h-[250px] sm:w-[260px] sm:h-[320px] lg:w-[320px] lg:h-[400px]"
                   style={{
-                    width: 320,
-                    height: 400,
                     borderRadius: 4,
                     overflow: 'hidden',
                     position: 'relative'
@@ -220,7 +218,7 @@ export function Hero() {
           }}>
           
           <div className="neo-divider mb-10" />
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
             {[
             {
               value: '30+',
@@ -250,14 +248,14 @@ export function Hero() {
             map((stat) =>
             <div key={stat.label} className="text-center">
                 <p
-                className="font-display font-extrabold text-4xl"
+                className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl"
                 style={{
                   color: stat.color
                 }}>
                 
                   {stat.value}
                 </p>
-                <p className="font-mono text-[0.7rem] text-neo-muted tracking-[0.1em] uppercase">
+                <p className="font-mono text-[0.6rem] sm:text-[0.7rem] text-neo-muted tracking-[0.1em] uppercase">
                   {stat.label}
                 </p>
               </div>
