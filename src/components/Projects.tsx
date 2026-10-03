@@ -1,307 +1,323 @@
 import React, { useState, Fragment } from 'react';
+
 interface Project {
   id: number;
   title: string;
   description: string;
+  problem: string;
+  solution: string;
+  result: string;
   tags: string[];
   badge: string;
-  badgeColor: string;
-  // link1Label: string;
-  // link2Label: string;
-  gradient: string;
-  patternAngle: string;
+  /** Replace '#' with the real production URL before going live. */
+  liveUrl: string;
+  /** Replace '#' with the real repository URL before going live. */
+  repoUrl: string;
+  shotClass: string;
   icon: React.ReactNode;
 }
+
 const PROJECTS: Project[] = [
-{
-  id: 1,
-  title: 'Online NewsFeed',
-  description:
-  'Modern responsive news platform delivering real-time global headlines with category filtering, dynamic article rendering, and fast-loading user experience.',
-  tags: ['React', 'News API', 'CSS'],
-  badge: 'API',
-  badgeColor: '#00d4ff',
-  gradient:
-  'linear-gradient(135deg,rgba(0,212,255,0.1) 0%,rgba(124,58,237,0.15) 100%)',
-  patternAngle: '45deg',
-  icon:
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <circle
-      cx="30"
-      cy="30"
-      r="28"
-      stroke="rgba(0,212,255,0.3)"
-      strokeWidth="1" />
-        <path
-      d="M20 30h20M30 20v20"
-      stroke="#00d4ff"
-      strokeWidth="2"
-      strokeLinecap="round" />
-        <circle
-      cx="30"
-      cy="30"
-      r="5"
-      fill="rgba(0,212,255,0.3)"
-      stroke="#00d4ff"
-      strokeWidth="1" />
+  {
+    id: 1,
+    title: 'Online NewsFeed',
+    description:
+      'Modern responsive news platform delivering real-time global headlines with category filtering, dynamic article rendering, and a fast-loading reading experience.',
+    problem:
+      'Readers had no fast, unified place to follow global headlines across categories.',
+    solution:
+      'Responsive React client that pulls from News API with category filtering and dynamic article rendering.',
+    result:
+      'A lightweight reader that surfaces real-time headlines without page reloads.',
+    tags: ['React', 'News API', 'CSS'],
+    badge: 'API',
+    liveUrl: '#',
+    repoUrl: '#',
+    shotClass: 'shot-1',
+    icon: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+        <circle cx="30" cy="30" r="28" stroke="rgba(255,255,255,0.5)" strokeWidth="1" />
+        <path d="M20 30h20M30 20v20" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="30" cy="30" r="5" fill="rgba(255,255,255,0.35)" stroke="#fff" strokeWidth="1" />
       </svg>
-},
-{
-  id: 2,
-  title: 'Triple Bee Events',
-  description:
-  'Full-stack event management platform for planning, promoting, and managing events with real-time ticketing and attendee tracking.',
-  tags: ['React', 'TypeScript'],
-  badge: 'FULL STACK',
-  badgeColor: '#10b981',
-  gradient:
-  'linear-gradient(135deg,rgba(16,185,129,0.1) 0%,rgba(0,212,255,0.15) 100%)',
-  patternAngle: '45deg',
-  icon:
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <rect x="15" y="18" width="30" height="25" rx="2" stroke="#10b981" strokeWidth="1.5" />
-        <path d="M25 15v6M35 15v6" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M15 26h30" stroke="rgba(16,185,129,0.4)" strokeWidth="1" />
+    ),
+  },
+  {
+    id: 2,
+    title: 'Triple Bee Events',
+    description:
+      'Full-stack event management platform for planning, promoting and managing events with real-time ticketing and attendee tracking.',
+    problem:
+      'Event organisers were juggling promotion, ticketing and attendance in separate tools.',
+    solution:
+      'Full-stack platform that unifies event planning, promotion, real-time ticketing and attendee tracking.',
+    result:
+      'One workflow from publishing an event to checking attendees in.',
+    tags: ['React', 'TypeScript'],
+    badge: 'FULL STACK',
+    liveUrl: '#',
+    repoUrl: '#',
+    shotClass: 'shot-2',
+    icon: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+        <rect x="15" y="18" width="30" height="25" rx="3" stroke="#fff" strokeWidth="1.5" />
+        <path d="M25 15v6M35 15v6" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M15 26h30" stroke="rgba(255,255,255,0.6)" strokeWidth="1" />
       </svg>
-},
-{
-  id: 3,
-  title: 'School Management System',
-  description:
-  'Comprehensive school administration platform with student enrollment, attendance tracking, grade management, and parent-teacher communication.',
-  tags: ['React', 'PostgreSQL', 'Python'],
-  badge: 'EDTECH',
-  badgeColor: '#7c3aed',
-  gradient:
-  'linear-gradient(135deg,rgba(124,58,237,0.1) 0%,rgba(16,185,129,0.15) 100%)',
-  patternAngle: '-45deg',
-  icon:
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <path d="M30 10L10 22l20 12 20-12L30 10z" stroke="#7c3aed" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M10 22v16l20 12V38" stroke="#7c3aed" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M50 22v16l-20 12V38" stroke="rgba(124,58,237,0.5)" strokeWidth="1.5" strokeLinejoin="round" />
+    ),
+  },
+  {
+    id: 3,
+    title: 'School Management System',
+    description:
+      'Comprehensive school administration platform with student enrollment, attendance tracking, grade management and parent-teacher communication.',
+    problem:
+      'Schools ran admissions, attendance, grades and parent comms across disconnected records.',
+    solution:
+      'A multi-role admin platform covering enrollment, attendance, grade management and messaging.',
+    result:
+      'Staff get one dashboard for the day-to-day operations of the school.',
+    tags: ['React', 'PostgreSQL', 'Python'],
+    badge: 'EDTECH',
+    liveUrl: '#',
+    repoUrl: '#',
+    shotClass: 'shot-3',
+    icon: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+        <path d="M30 10L10 22l20 12 20-12L30 10z" stroke="#fff" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M10 22v16l20 12V38" stroke="#fff" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M50 22v16l-20 12V38" stroke="rgba(255,255,255,0.65)" strokeWidth="1.5" strokeLinejoin="round" />
       </svg>
-},
-{
-  id: 4,
-  title: 'School Timetable Generator',
-  description:
-  'Intelligent timetable scheduling system that auto-generates conflict-free class schedules based on teacher availability, room capacity, and curriculum requirements.',
-  tags: ['Python', 'FastAPI', 'React'],
-  badge: 'AUTOMATION',
-  badgeColor: '#00d4ff',
-  gradient:
-  'linear-gradient(135deg,rgba(0,212,255,0.08) 0%,rgba(124,58,237,0.12) 100%)',
-  patternAngle: '45deg',
-  icon:
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <rect x="12" y="12" width="36" height="36" rx="2" stroke="#00d4ff" strokeWidth="1.5" />
-        <path d="M12 22h36M12 32h36M12 42h36" stroke="rgba(0,212,255,0.3)" strokeWidth="1" />
-        <path d="M22 12v36M32 12v36M42 12v36" stroke="rgba(0,212,255,0.3)" strokeWidth="1" />
+    ),
+  },
+  {
+    id: 4,
+    title: 'School Timetable Generator',
+    description:
+      'Intelligent scheduling system that auto-generates conflict-free class timetables from teacher availability, room capacity and curriculum requirements.',
+    problem:
+      'Hand-built timetables kept producing clashes between teachers, rooms and subjects.',
+    solution:
+      'Constraint-based generator that runs on FastAPI and rewrites the schedule from real availability data.',
+    result:
+      'Conflict-free timetables produced automatically instead of manually.',
+    tags: ['Python', 'FastAPI', 'React'],
+    badge: 'AUTOMATION',
+    liveUrl: '#',
+    repoUrl: '#',
+    shotClass: 'shot-4',
+    icon: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+        <rect x="12" y="12" width="36" height="36" rx="4" stroke="#fff" strokeWidth="1.5" />
+        <path d="M12 22h36M12 32h36M12 42h36" stroke="rgba(255,255,255,0.55)" strokeWidth="1" />
+        <path d="M22 12v36M32 12v36M42 12v36" stroke="rgba(255,255,255,0.55)" strokeWidth="1" />
       </svg>
-},
-{
-  id: 5,
-  title: 'API Automation Suite',
-  description:
-  'Custom API automation framework for testing, monitoring, and orchestrating third-party API integrations with automated retry logic and detailed logging.',
-  tags: ['Node.js', 'Python', 'REST APIs'],
-  badge: 'API',
-  badgeColor: '#10b981',
-  gradient:
-  'linear-gradient(135deg,rgba(16,185,129,0.08) 0%,rgba(0,212,255,0.12) 100%)',
-  patternAngle: '45deg',
-  icon:
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <path d="M20 20l20 0M20 30l20 0M20 40l20 0" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="15" cy="20" r="3" stroke="#10b981" strokeWidth="1.5" />
-        <circle cx="45" cy="30" r="3" stroke="#10b981" strokeWidth="1.5" />
-        <circle cx="15" cy="40" r="3" stroke="#10b981" strokeWidth="1.5" />
+    ),
+  },
+  {
+    id: 5,
+    title: 'API Automation Suite',
+    description:
+      'Custom API automation framework for testing, monitoring and orchestrating third-party integrations with automated retry logic and detailed logging.',
+    problem:
+      'Third-party integrations failed silently and burned engineering time to debug.',
+    solution:
+      'A framework that tests, monitors and orchestrates integrations with retries and structured logs.',
+    result:
+      'Transient failures recover on their own and incidents are traceable in the logs.',
+    tags: ['Node.js', 'Python', 'REST APIs'],
+    badge: 'API',
+    liveUrl: '#',
+    repoUrl: '#',
+    shotClass: 'shot-5',
+    icon: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+        <path d="M20 20h20M20 30h20M20 40h20" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="15" cy="20" r="3" stroke="#fff" strokeWidth="1.5" />
+        <circle cx="45" cy="30" r="3" stroke="#fff" strokeWidth="1.5" />
+        <circle cx="15" cy="40" r="3" stroke="#fff" strokeWidth="1.5" />
       </svg>
-},
-{
-  id: 6,
-  title: 'IT Specialist Portfolio',
-  description:
-  'Professional portfolio showcasing IT infrastructure, network administration, cybersecurity projects, and technical consulting services with client testimonials.',
-  tags: ['React', 'CSS', 'JavaScript'],
-  badge: 'PORTFOLIO',
-  badgeColor: '#7c3aed',
-  gradient:
-  'linear-gradient(135deg,rgba(124,58,237,0.08) 0%,rgba(16,185,129,0.12) 100%)',
-  patternAngle: '-45deg',
-  icon:
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <rect x="15" y="15" width="30" height="22" rx="2" stroke="#7c3aed" strokeWidth="1.5" />
-        <path d="M25 37v6M35 37v6" stroke="#7c3aed" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M20 43h20" stroke="#7c3aed" strokeWidth="1.5" strokeLinecap="round" />
+    ),
+  },
+  {
+    id: 6,
+    title: 'IT Specialist Portfolio',
+    description:
+      'Professional portfolio showcasing IT infrastructure, network administration and security projects alongside technical consulting services.',
+    problem:
+      'An IT consultant had no single place to present credentials and client proof.',
+    solution:
+      'A responsive portfolio that organises projects, services and testimonials.',
+    result:
+      'A credible first impression that explains the offer at a glance.',
+    tags: ['React', 'CSS', 'JavaScript'],
+    badge: 'PORTFOLIO',
+    liveUrl: '#',
+    repoUrl: '#',
+    shotClass: 'shot-6',
+    icon: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+        <rect x="15" y="15" width="30" height="22" rx="3" stroke="#fff" strokeWidth="1.5" />
+        <path d="M25 37v6M35 37v6" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M20 43h20" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
-}];
+    ),
+  },
+];
 
-function ProjectCard({ project }: {project: Project;}) {
+function placeholderClick(e: React.MouseEvent) {
+  // Placeholder link — replace href with the real URL, then remove this guard.
+  if ((e.currentTarget as HTMLAnchorElement).getAttribute('href') === '#') {
+    e.preventDefault();
+  }
+}
+
+function ProjectCard({ project }: { project: Project }) {
   const [imgError, setImgError] = useState(false);
+
+  // 3D tilt on pointer devices only; disabled for reduced motion.
+  const tilt = (e: React.PointerEvent<HTMLElement>) => {
+    if (e.pointerType === 'touch') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const card = e.currentTarget;
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `perspective(900px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-6px)`;
+  };
+  const resetTilt = (e: React.PointerEvent<HTMLElement>) => {
+    e.currentTarget.style.transform = '';
+  };
+
   return (
-    <div className="project-card glass rounded overflow-hidden">
-      <div
-        className="relative flex items-center justify-center"
-        style={{
-          height: 180,
-          background: project.gradient
-        }}>
-        
-        {!imgError ?
-        <img
-          src={`/projects/project-${project.id}.jpg`}
-          alt={project.title}
-          className="w-full h-full object-cover"
-          onError={() => setImgError(true)} /> :
-
-
-        <Fragment>
-            <div
-            className="absolute inset-0"
-            style={{
-              background: `repeating-linear-gradient(${project.patternAngle},transparent,transparent 20px,rgba(0,212,255,0.03) 20px,rgba(0,212,255,0.03) 40px)`
-            }} />
-          
-            {project.icon}
+    <article
+      className="project-card"
+      onPointerMove={tilt}
+      onPointerLeave={resetTilt}
+    >
+      {/* Screenshot (lazy) with graceful gradient fallback */}
+      <div className={`project-shot ${project.shotClass}`}>
+        {!imgError ? (
+          <img
+            src={`/projects/project-${project.id}.jpg`}
+            alt={`${project.title} interface preview`}
+            width={640}
+            height={400}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <Fragment>
+            <div className="lines" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </div>
+            <div className="window" aria-hidden="true" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-90">
+              {project.icon}
+            </div>
           </Fragment>
-        }
-        <div className="absolute top-3 right-3">
-          <span
-            className="font-mono text-[0.6rem] tracking-[0.1em] px-2 py-0.5 rounded-sm"
-            style={{
-              border: `1px solid ${project.badgeColor}4d`,
-              color: project.badgeColor
-            }}>
-            
-            {project.badge}
-          </span>
-        </div>
+        )}
+        <span
+          className="absolute top-3 right-3 text-[11px] font-bold tracking-[0.1em] px-2.5 py-1 rounded-full bg-white/90 text-ink"
+        >
+          {project.badge}
+        </span>
       </div>
-      <div className="p-6">
-        <h3 className="font-display font-bold text-[1.05rem] text-neo-text mb-2">
+
+      <div className="p-6 flex flex-col flex-1">
+        <h3
+          className="font-extrabold text-ink m-0"
+          style={{ fontSize: 20, letterSpacing: '-0.02em' }}
+        >
           {project.title}
         </h3>
-        <p className="text-[0.83rem] text-slate-500 leading-relaxed mb-4">
-          {project.description}
-        </p>
-        <div className="flex flex-wrap gap-2 mb-5">
-          {project.tags.map((tag) =>
-          <span key={tag} className="tech-tag">
+        <p className="text-mut text-[15px] mt-2 mb-0">{project.description}</p>
+
+        {/* Problem / Solution / Result */}
+        <dl className="psr">
+          <div>
+            <dt>Problem</dt>
+            <dd className="m-0">{project.problem}</dd>
+          </div>
+          <div>
+            <dt>Solution</dt>
+            <dd className="m-0">{project.solution}</dd>
+          </div>
+          <div>
+            <dt>Result</dt>
+            <dd className="m-0">{project.result}</dd>
+          </div>
+        </dl>
+
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {project.tags.map((tag) => (
+            <span key={tag} className="tech-tag">
               {tag}
             </span>
-          )}
+          ))}
         </div>
-        <div className="flex items-center gap-4">
+
+        <div className="flex items-center gap-5 mt-5 pt-4" style={{ borderTop: '1px solid var(--line)' }}>
           <a
-            href="#"
-            className="font-mono text-[0.7rem] text-neo-accent tracking-wide">
-            
-            {/* {project.link1Label} */}
+            href={project.liveUrl}
+            onClick={placeholderClick}
+            className="text-[13px] font-bold text-accent hover:underline"
+            target={project.liveUrl !== '#' ? '_blank' : undefined}
+            rel="noreferrer"
+          >
+            Live site ↗
           </a>
           <a
-            href="#"
-            className="font-mono text-[0.7rem] text-neo-muted tracking-wide">
-            
-            {/* {project.link2Label} */}
+            href={project.repoUrl}
+            onClick={placeholderClick}
+            className="text-[13px] font-bold text-mut hover:text-ink transition-colors"
+            target={project.repoUrl !== '#' ? '_blank' : undefined}
+            rel="noreferrer"
+          >
+            GitHub ↗
           </a>
         </div>
       </div>
-    </div>);
-
+    </article>
+  );
 }
+
 export function Projects() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el)
-    el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-  const sectionLabel = '';
+
   return (
-    <section id="projects" className="relative py-28 grid-bg">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-10 lg:mb-16">
+    <section id="work" className="py-24 lg:py-28">
+      <div className="max-w-[1100px] mx-auto px-6">
+        <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-10 lg:mb-14">
           <div>
-            <p className="section-num mb-3">{sectionLabel}</p>
-            <h2
-              className="font-display font-extrabold leading-[1.1] text-neo-text tracking-tight"
-              style={{
-                fontSize: 'clamp(2rem,4vw,3rem)'
-              }}>
-              
-              Things I&apos;ve built.
+            <p className="eyebrow m-0">Selected work</p>
+            <h2 className="section-title mt-2.5 mb-0">
+              Things I&apos;ve designed &amp; built.
             </h2>
           </div>
           <button
             onClick={() => scrollTo('contact')}
-            className="font-mono text-[0.75rem] text-neo-accent tracking-wide whitespace-nowrap">
-            
-            view all projects {'\u2192'}
+            className="text-[14px] font-bold text-accent hover:underline whitespace-nowrap"
+          >
+            Start a project →
           </button>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {PROJECTS.map((project, i) =>
-          <div
-            key={project.id}
-            className="reveal"
-            style={{
-              transitionDelay: `${(i + 1) * 0.1}s`
-            }}>
-            
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-7">
+          {PROJECTS.map((project, i) => (
+            <div key={project.id} className="reveal" style={{ transitionDelay: `${(i % 2) * 90}ms` }}>
               <ProjectCard project={project} />
             </div>
-          )}
-
-          <div
-            className="reveal"
-            style={{
-              transitionDelay: '0.6s'
-            }}>
-            
-            <div
-              className="project-card glass rounded overflow-hidden"
-              style={{
-                borderStyle: 'dashed'
-              }}>
-              
-              <div
-                className="flex flex-col items-center justify-center gap-3 p-8"
-                style={{
-                  minHeight: 280
-                }}>
-                
-                <div
-                  className="w-[50px] h-[50px] rounded-full flex items-center justify-center"
-                  style={{
-                    border: '1px dashed rgba(255,255,255,0.1)'
-                  }}>
-                  
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#4b5563"
-                    strokeWidth="1.5">
-                    
-                    <path d="M12 5v14M5 12h14" />
-                  </svg>
-                </div>
-                <p className="font-mono text-[0.72rem] text-gray-700 tracking-[0.08em] text-center">
-                  next project
-                  <br />
-                  coming soon
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }

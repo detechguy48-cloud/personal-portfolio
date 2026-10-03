@@ -1,4 +1,3 @@
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,44 +7,46 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        mono: ['DM Mono', 'monospace'],
-        body: ['Instrument Sans', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'],
+        body: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       },
       colors: {
-        neo: {
-          bg: '#050810',
-          surface: '#0d1117',
-          glass: 'rgba(255,255,255,0.04)',
-          border: 'rgba(255,255,255,0.08)',
-          accent: '#00d4ff',
-          accent2: '#7c3aed',
-          accent3: '#10b981',
-          muted: '#4b5563',
-          text: '#e2e8f0',
-          sub: '#94a3b8',
-        }
+        // Core palette — always light
+        ink: '#0B0B14',
+        mut: '#5B6075',
+        line: '#E8E9F0',
+        soft: '#F6F7FB',
+        // Accent ramp
+        accent: '#4F46E5',
+        aqua: '#06B6D4',
+        rose: '#F472B6',
+      },
+      borderRadius: {
+        '4xl': '32px',
       },
       animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'scan': 'scan 3s linear infinite',
+        'float': 'float 14s ease-in-out infinite',
+        'bob': 'bob 6s ease-in-out infinite',
+        'marquee': 'marquee 30s linear infinite',
+        'ping-soft': 'pingSoft 2s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
       keyframes: {
         float: {
-          '0%,100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '50%': { transform: 'translate(30px, -40px) scale(1.12)' },
         },
-        glow: {
-          from: { boxShadow: '0 0 20px rgba(0,212,255,0.2)' },
-          to: { boxShadow: '0 0 40px rgba(0,212,255,0.5), 0 0 80px rgba(0,212,255,0.2)' },
+        bob: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-14px)' },
         },
-        scan: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(400%)' },
-        }
-      }
+        marquee: {
+          to: { transform: 'translateX(-50%)' },
+        },
+        pingSoft: {
+          '75%, 100%': { boxShadow: '0 0 0 10px rgba(34,197,94,0)' },
+        },
+      },
     }
   },
   plugins: [],
