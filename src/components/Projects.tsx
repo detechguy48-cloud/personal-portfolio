@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React from 'react';
 
 interface Project {
   id: number;
@@ -14,152 +14,165 @@ interface Project {
   /** Replace '#' with the real repository URL before going live. */
   repoUrl: string;
   shotClass: string;
+  /** Cloudinary public ID of the promo video shown in the card header. */
+  videoId: string;
   icon: React.ReactNode;
 }
+
+const CLOUD_NAME = 'afftdzay';
+
+/**
+ * Autoplay is requested twice — once as flat params (legacy embedder) and once
+ * inside the `player` object (current embedder format) — so the video starts
+ * playing silently no matter which shape the Cloudinary embedder honours.
+ * Muted + playsinline is what browsers require to allow autoplay.
+ */
+const PLAYBACK_PARAMS =
+  'autoplay=true&muted=true&loop=true&controls=true' +
+  '&player%5Bautoplay%5D=true&player%5Bmuted%5D=true' +
+  '&player%5Bloop%5D=true&player%5Bcontrols%5D=true';
+
+const videoSrc = (publicId: string) =>
+  `https://player.cloudinary.com/embed/?cloud_name=${CLOUD_NAME}&public_id=${encodeURIComponent(
+    publicId,
+  )}&${PLAYBACK_PARAMS}`;
 
 const PROJECTS: Project[] = [
   {
     id: 1,
-    title: 'Online NewsFeed',
+    title: 'Vitalis Health',
     description:
-      'Modern responsive news platform delivering real-time global headlines with category filtering, dynamic article rendering, and a fast-loading reading experience.',
+      'Modern care, close to you — a patient-first healthcare platform for finding trusted doctors, booking visits and managing records in one place.',
     problem:
-      'Readers had no fast, unified place to follow global headlines across categories.',
+      'Patients had no fast way to find trusted care and book an appointment without calling around.',
     solution:
-      'Responsive React client that pulls from News API with category filtering and dynamic article rendering.',
+      'A responsive healthcare client with doctor search, online booking and secure record access.',
     result:
-      'A lightweight reader that surfaces real-time headlines without page reloads.',
-    tags: ['React', 'News API', 'CSS'],
-    badge: 'API',
+      'Appointments booked in minutes and a calmer, more connected patient experience.',
+    tags: ['React', 'Node.js', 'Healthcare'],
+    badge: 'HEALTHCARE',
     liveUrl: '#',
     repoUrl: '#',
     shotClass: 'shot-1',
+    videoId: 'Vitalis_Health_Modern_Care_Close_to_You',
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-        <circle cx="30" cy="30" r="28" stroke="rgba(255,255,255,0.5)" strokeWidth="1" />
-        <path d="M20 30h20M30 20v20" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="30" cy="30" r="5" fill="rgba(255,255,255,0.35)" stroke="#fff" strokeWidth="1" />
+        <path
+          d="M30 47s-13-8-13-18a7.5 7.5 0 0 1 13-4.8A7.5 7.5 0 0 1 43 29c0 10-13 18-13 18z"
+          stroke="#fff"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M17 31h7l2.5-5 4 10 2.5-5h10"
+          stroke="rgba(255,255,255,0.85)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
   {
     id: 2,
-    title: 'Triple Bee Events',
+    title: 'Aura Store',
     description:
-      'Full-stack event management platform for planning, promoting and managing events with real-time ticketing and attendee tracking.',
+      'Everyday essentials, elevated — a polished storefront with curated collections, smart search and a one-page checkout that never gets in the way.',
     problem:
-      'Event organisers were juggling promotion, ticketing and attendance in separate tools.',
+      'Shoppers bounced between clunky product pages and a slow, multi-step checkout.',
     solution:
-      'Full-stack platform that unifies event planning, promotion, real-time ticketing and attendee tracking.',
+      'A fast storefront with curated collections, instant search, cart and one-page checkout.',
     result:
-      'One workflow from publishing an event to checking attendees in.',
-    tags: ['React', 'TypeScript'],
-    badge: 'FULL STACK',
+      'Higher conversion and a checkout that takes seconds instead of minutes.',
+    tags: ['React', 'TypeScript', 'Stripe'],
+    badge: 'E-COMMERCE',
     liveUrl: '#',
     repoUrl: '#',
     shotClass: 'shot-2',
+    videoId: 'Aura_Store_Everyday_Essentials_Elevated',
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-        <rect x="15" y="18" width="30" height="25" rx="3" stroke="#fff" strokeWidth="1.5" />
-        <path d="M25 15v6M35 15v6" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M15 26h30" stroke="rgba(255,255,255,0.6)" strokeWidth="1" />
+        <path
+          d="M17 20h26l-2.5 27h-21L17 20z"
+          stroke="#fff"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M23.5 20a6.5 6.5 0 0 1 13 0"
+          stroke="#fff"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M24 29h12"
+          stroke="rgba(255,255,255,0.6)"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
   {
     id: 3,
-    title: 'School Management System',
+    title: 'Pixel Arcade',
     description:
-      'Comprehensive school administration platform with student enrollment, attendance tracking, grade management and parent-teacher communication.',
+      'Play the classics — a browser arcade packed with retro-inspired games, responsive controls and global high-score leaderboards.',
     problem:
-      'Schools ran admissions, attendance, grades and parent comms across disconnected records.',
+      'Classic games were scattered across installs, ads and incompatible players.',
     solution:
-      'A multi-role admin platform covering enrollment, attendance, grade management and messaging.',
+      'A browser arcade with responsive input, smooth Canvas rendering and online leaderboards.',
     result:
-      'Staff get one dashboard for the day-to-day operations of the school.',
-    tags: ['React', 'PostgreSQL', 'Python'],
-    badge: 'EDTECH',
+      'Instant, install-free play with competitive high scores that keep players coming back.',
+    tags: ['JavaScript', 'Canvas', 'Game Dev'],
+    badge: 'GAMING',
     liveUrl: '#',
     repoUrl: '#',
     shotClass: 'shot-3',
+    videoId: 'PIXEL_ARCADE_Play_the_Classics',
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-        <path d="M30 10L10 22l20 12 20-12L30 10z" stroke="#fff" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M10 22v16l20 12V38" stroke="#fff" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M50 22v16l-20 12V38" stroke="rgba(255,255,255,0.65)" strokeWidth="1.5" strokeLinejoin="round" />
+        <circle cx="30" cy="39" r="11" stroke="#fff" strokeWidth="1.5" />
+        <circle cx="30" cy="39" r="3.5" fill="rgba(255,255,255,0.4)" stroke="#fff" strokeWidth="1.5" />
+        <path d="M30 28V17" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="30" cy="14" r="4.5" fill="rgba(255,255,255,0.3)" stroke="#fff" strokeWidth="1.5" />
+        <path
+          d="M14 39h5M41 39h5"
+          stroke="rgba(255,255,255,0.6)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
   {
     id: 4,
-    title: 'School Timetable Generator',
+    title: 'PulseFit',
     description:
-      'Intelligent scheduling system that auto-generates conflict-free class timetables from teacher availability, room capacity and curriculum requirements.',
+      'Train harder, live better — a fitness companion with structured workout plans, set-by-set logging and progress you can actually see.',
     problem:
-      'Hand-built timetables kept producing clashes between teachers, rooms and subjects.',
+      'Gym-goers lost track of their programming, weights lifted and weekly progress.',
     solution:
-      'Constraint-based generator that runs on FastAPI and rewrites the schedule from real availability data.',
+      'A mobile-first fitness app with adaptive plans, quick set logging and streak tracking.',
     result:
-      'Conflict-free timetables produced automatically instead of manually.',
-    tags: ['Python', 'FastAPI', 'React'],
-    badge: 'AUTOMATION',
+      'Members stay consistent because every session adds up to visible, measurable progress.',
+    tags: ['React', 'Firebase', 'Fitness'],
+    badge: 'FITNESS',
     liveUrl: '#',
     repoUrl: '#',
     shotClass: 'shot-4',
+    videoId: 'PULSEFIT_Train_Harder._Live_Better.',
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-        <rect x="12" y="12" width="36" height="36" rx="4" stroke="#fff" strokeWidth="1.5" />
-        <path d="M12 22h36M12 32h36M12 42h36" stroke="rgba(255,255,255,0.55)" strokeWidth="1" />
-        <path d="M22 12v36M32 12v36M42 12v36" stroke="rgba(255,255,255,0.55)" strokeWidth="1" />
-      </svg>
-    ),
-  },
-  {
-    id: 5,
-    title: 'API Automation Suite',
-    description:
-      'Custom API automation framework for testing, monitoring and orchestrating third-party integrations with automated retry logic and detailed logging.',
-    problem:
-      'Third-party integrations failed silently and burned engineering time to debug.',
-    solution:
-      'A framework that tests, monitors and orchestrates integrations with retries and structured logs.',
-    result:
-      'Transient failures recover on their own and incidents are traceable in the logs.',
-    tags: ['Node.js', 'Python', 'REST APIs'],
-    badge: 'API',
-    liveUrl: '#',
-    repoUrl: '#',
-    shotClass: 'shot-5',
-    icon: (
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-        <path d="M20 20h20M20 30h20M20 40h20" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="15" cy="20" r="3" stroke="#fff" strokeWidth="1.5" />
-        <circle cx="45" cy="30" r="3" stroke="#fff" strokeWidth="1.5" />
-        <circle cx="15" cy="40" r="3" stroke="#fff" strokeWidth="1.5" />
-      </svg>
-    ),
-  },
-  {
-    id: 6,
-    title: 'IT Specialist Portfolio',
-    description:
-      'Professional portfolio showcasing IT infrastructure, network administration and security projects alongside technical consulting services.',
-    problem:
-      'An IT consultant had no single place to present credentials and client proof.',
-    solution:
-      'A responsive portfolio that organises projects, services and testimonials.',
-    result:
-      'A credible first impression that explains the offer at a glance.',
-    tags: ['React', 'CSS', 'JavaScript'],
-    badge: 'PORTFOLIO',
-    liveUrl: '#',
-    repoUrl: '#',
-    shotClass: 'shot-6',
-    icon: (
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-        <rect x="15" y="15" width="30" height="22" rx="3" stroke="#fff" strokeWidth="1.5" />
-        <path d="M25 37v6M35 37v6" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M20 43h20" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
+        <rect x="16" y="25" width="9" height="14" rx="2.5" stroke="#fff" strokeWidth="1.5" />
+        <rect x="35" y="25" width="9" height="14" rx="2.5" stroke="#fff" strokeWidth="1.5" />
+        <path d="M25 32h10" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
+        <path
+          d="M12 27v10M48 27v10"
+          stroke="rgba(255,255,255,0.7)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -173,8 +186,6 @@ function placeholderClick(e: React.MouseEvent) {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const [imgError, setImgError] = useState(false);
-
   // 3D tilt on pointer devices only; disabled for reduced motion.
   const tilt = (e: React.PointerEvent<HTMLElement>) => {
     if (e.pointerType === 'touch') return;
@@ -195,37 +206,31 @@ function ProjectCard({ project }: { project: Project }) {
       onPointerMove={tilt}
       onPointerLeave={resetTilt}
     >
-      {/* Screenshot (lazy) with graceful gradient fallback */}
+      {/* Bubble video player — gradient shell + floating glass bubbles */}
       <div className={`project-shot ${project.shotClass}`}>
-        {!imgError ? (
-          <img
-            src={`/projects/project-${project.id}.jpg`}
-            alt={`${project.title} interface preview`}
-            width={640}
-            height={400}
+        <span className="bub bub-a" aria-hidden="true" />
+        <span className="bub bub-b" aria-hidden="true" />
+        <span className="bub bub-c" aria-hidden="true" />
+
+        <div className="video-frame">
+          {/* Visible behind the iframe while the player boots up */}
+          <div className="video-fallback" aria-hidden="true">
+            {project.icon}
+          </div>
+          <iframe
+            src={videoSrc(project.videoId)}
+            title={`${project.title} — project demo video`}
             loading="lazy"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover"
-            onError={() => setImgError(true)}
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allowFullScreen
           />
-        ) : (
-          <Fragment>
-            <div className="lines" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-            </div>
-            <div className="window" aria-hidden="true" />
-            <div className="absolute inset-0 flex items-center justify-center opacity-90">
-              {project.icon}
-            </div>
-          </Fragment>
-        )}
-        <span
-          className="absolute top-3 right-3 text-[11px] font-bold tracking-[0.1em] px-2.5 py-1 rounded-full bg-white/90 text-ink"
-        >
-          {project.badge}
+        </div>
+
+        <span className="shot-live">
+          <i aria-hidden="true" />
+          NOW PLAYING
         </span>
+        <span className="shot-tag">{project.badge}</span>
       </div>
 
       <div className="p-6 flex flex-col flex-1">
